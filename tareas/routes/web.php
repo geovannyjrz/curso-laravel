@@ -27,9 +27,13 @@ Route::get('/tareas', function () {
 		'Tarea 3'
 		);*/
 
-	$tareas = DB::table('tareas')->get();
+		$tareas = DB::table('tareas')->get();
+		return view('tareas.index', compact('tareas'));
 
-	dd($tareas[0]->titulo);
+	});
 
-	return view('tareas', compact('tareas'));
+Route::get('/tareas/{id}', function ($id) {
+	$tarea = DB::table('tareas')->find($id);
+	return view('tareas.show', compact('tarea'));
+	
 });
