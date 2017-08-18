@@ -10,7 +10,7 @@
 
 		@foreach($products as $product)
 		<li>
-			{{$product->descripcion}} - ${{$product->precio}}
+			<a href="/detalle/{{$product->id}}">{{$product->descripcion}}</a>
 		</li>
 		@endforeach
 
