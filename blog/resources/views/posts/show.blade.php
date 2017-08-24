@@ -2,6 +2,8 @@
 
 @section('content')
 <h1>{{$post->title}}</h1>
-<h2>{{$post->body}}</h2>
+<hr>
+<p>{{$post->created_at}}</p>
+<p>{{$post->body}}</p>
 <a href="/">Regresar</a>
 @endsection
