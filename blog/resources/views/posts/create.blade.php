@@ -9,11 +9,11 @@
 	{{ csrf_field()}}
 		<div class="row">
 			<div class="input-field col s12">
-				<input placeholder="Ingresa título" id="txt-title" name="txt-title" type="text" class="validate">
+				<input placeholder="Ingresa título" id="txt-title" name="txt-title" type="text" class="validate" required>
 				<label for="txt-title">Título</label>
 			</div>
 			<div class="input-field col s12">
-				<textarea id="txt-body" class="materialize-textarea" name="txt-body"></textarea>
+				<textarea id="txt-body" class="materialize-textarea" name="txt-body" required></textarea>
 				<label for="textarea1">Textarea</label>
 			</div>
 		</div>
@@ -22,5 +22,7 @@
 		</button>
 	</form>
 </div>
+
+@include('layouts.errors')
 
 @endsection

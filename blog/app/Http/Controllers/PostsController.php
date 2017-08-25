@@ -10,7 +10,8 @@ class PostsController extends Controller
 
 	public function index(){
 
-		$posts = Post::all();
+		//$posts = Post::all();
+		$posts = Post::latest()->get();
 		return view('posts.index', compact('posts'));
 
 	}
@@ -31,18 +32,24 @@ class PostsController extends Controller
 
 		//dd(request()->all());
 
+		$this->validate(request(), array(
+			'txt-title' => 'required',
+			'txt-body' => 'required'
+			));
+
 		$post = new Post();
 
 		$post->title = request('txt-title');
 		$post->body = request('txt-body');
+		$post->created_at = date("Y-m-d H:i:s"); 
 
 		$post->save();
 
-		Post::create(
+		/*Post::create(
 			request(array('title', 'body'))
 			);
 
-		Post::create(request()->all());
+		Post::create(request()->all());*/
 
 		return redirect('/');
 	}
