@@ -41,6 +41,7 @@ class PostsController extends Controller
 
 		$post->title = request('txt-title');
 		$post->body = request('txt-body');
+		$post->user_id = auth()->user()->id;
 		$post->created_at = date("Y-m-d H:i:s"); 
 
 		$post->save();

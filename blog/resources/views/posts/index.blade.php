@@ -11,6 +11,9 @@
 		<div class="card grey lighten-4">
 			<div class="card-content">
 				<span class="card-title">{{$post->title}}</span>
+
+				<p>Publicado por: {{$post->user->name}}</p>
+
 				<p>{{str_limit($post->body, 50)}}</p>
 				</div>
 				<div class="card-action">
