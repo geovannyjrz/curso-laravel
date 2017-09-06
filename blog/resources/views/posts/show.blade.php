@@ -6,7 +6,7 @@
 <p>{{$post->created_at->toFormattedDateString()}}</p>
 <p>{{$post->body}}</p>
 <hr>
-<h2>Comentarios</h2>
+<h3>Comentarios</h3>
 
 @foreach($post->comments as $comment)
 
