@@ -10,6 +10,32 @@
 	$(document).ready(function(){
 
 		$(".button-collapse").sideNav();
+
+		$('#frmComment').submit(function(event){
+
+			var comentario = $('#frmComment textarea[name=txt-comment]').val();
+			var idPost = $('#frmComment input[name=id]').val();
+			var token = $('#frmComment input[name=_token]').val();
+			
+			$.ajax({
+				type: 'POST',
+				url: '/posts/'+ idPost + '/comments',
+				data: {
+					'txt-comment':comentario,
+					'_token': token
+				},
+				success: function(response){
+					if(response['respuesta']){
+						Materialize.toast(response['mensaje'], 2000);
+					}else{
+						Materialize.toast(response['mensaje'], 2000);
+					}
+				}
+			});
+
+			event.preventDefault();
+		})
+
 		$("#btnAjax").click(function(){
 			$.ajax({
 				type: 'GET',

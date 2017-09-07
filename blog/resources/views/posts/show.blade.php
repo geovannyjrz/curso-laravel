@@ -6,14 +6,19 @@
 <p>{{$post->created_at->toFormattedDateString()}}</p>
 <p>{{$post->body}}</p>
 <hr>
-<h3>Comentarios</h3>
+
+<br>
+<br>
+<br>
+<br>
+<h4>Comentarios</h4>
 
 @foreach($post->comments as $comment)
 
 <ul class="collection">
 	<li class="collection-item avatar">
 		<i class="material-icons circle green">insert_chart</i>
-		<span class="title"><strong>{{ $comment->body}}</strong></span>
+		<span class="title"><strong>{{ $comment->user->name }}</strong></span>
 		<p>{{ $comment->body}} <br>
 			{{ $comment->created_at->diffForHumans() }}
 		</p>
@@ -21,9 +26,24 @@
 	</li>
 </ul>
 
-
 @endforeach
 
+@if(Auth::check())
+<hr>
+<form id="frmComment">
+	{{ csrf_field() }}
+	<input type="hidden" id="id" name="id" value="{{ $post->id }}">
+	
+	<div class="input-field">
+		<textarea name="txt-comment" id="txt-comment" class="materialize-textarea"></textarea>
+		<label for="txt-comment">Agregar comentario</label>
+	</div>
+
+	<button class="btn waves-effect waves-light" type="submit">
+		Comentar <i class="material-icons right">send</i>
+	</button>
+</form>
+@endif
 
 
 @endsection
