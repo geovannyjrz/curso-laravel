@@ -46,13 +46,35 @@ class PostsController extends Controller
 
 		$post->save();
 
-		/*Post::create(
-			request(array('title', 'body'))
-			);
+		/*
+		Post::create(
+		request(array('title', 'body'))
+		);
 
-		Post::create(request()->all());*/
+		Post::create(request()->all());
+		*/
 
 		return redirect('/');
+
+	}
+
+	public function delete(Post $post){
+		
+		$data = Post::destroy($post->id);
+
+		id($data == 1){
+			return array(
+				'mensaje' => 'Se elimino el post',
+				'respuesta' => true
+				);
+		}
+
+		return array(
+			'mensaje' => 'No se pudo eliminar',
+			'respuesta' => true
+			);
+
+		
 	}
 
 }

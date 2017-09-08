@@ -20,9 +20,11 @@
 
 	<tbody>
 		@foreach(Auth::user()->posts as $post)
-		<tr>
+		<tr class="post-{{ $post->id }}">
 			<td>{{ $post->title }}</td>
-			<td><a href="/posts/{{ $post->id }}">ver más</a> | Editar | Eliminar</td>
+			<td>
+			<a href="/posts/{{ $post->id }}">ver más</a> | Editar |
+			<a href="" class="btnDelete" data-id="{{ $post->id }}" data-token="{{ csrf_token() }}">Eliminar</a></td>
 		</tr>
 		@endforeach
 	</tbody>

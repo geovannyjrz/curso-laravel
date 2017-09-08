@@ -25,7 +25,20 @@
 					'_token': token
 				},
 				success: function(response){
+
 					if(response['respuesta']){
+
+						var datos = "<ul class='collection'>";
+						datos += "<li class='collection-item avatar'>";
+						datos += "<i class='material-icons circle green'>insert_chart</i>";
+						datos += "<span class='title'><strong>"+response['data']['nombre']+"</strong></span>";
+						datos += "<p>"+response['data']['comentario']+"<br>"+response['data']['fecha']+"</p>";
+						datos += "<a href='#!' class='secondary-content'><i class='material-icons'>grade</i></a>";
+						datos += "</li>";
+						datos += "</ul>";
+						
+						$('#listComments').append(datos);
+
 						Materialize.toast(response['mensaje'], 2000);
 					}else{
 						Materialize.toast(response['mensaje'], 2000);
@@ -34,7 +47,26 @@
 			});
 
 			event.preventDefault();
-		})
+		});
+
+		$('.btnDelete').click(function(event){
+			var idPost = $(this).data('id');
+			var token = $(this).data('token');
+
+			$.ajax({
+				type: 'DELETE',
+				url:'/posts/' + idPost,
+				data: {
+					"_token": token
+				},
+				success: function(response){ // 1 correctamente
+					$(".post-"+idPost).remove();
+					Materialize.toast(response['mensaje'], 2000);
+				}
+			});
+
+			event.preventDefault();
+		});
 
 		$("#btnAjax").click(function(){
 			$.ajax({

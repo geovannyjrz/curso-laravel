@@ -38,13 +38,18 @@ class CommentsController extends Controller
 
     	return array(
     		'mensaje' => 'comentario agregado',
+    		'respuesta'=>true,
     		'data' => array(
-    			'respuesta'=>true,
     			'fecha' => $comment->created_at->diffForHumans(),
     			'nombre'=>$comment->user->name,
     			'comentario'=>$comment->body
     			)
     		);
 
+    }
+
+    public function delete(Post $post){
+    	Post::destroy($post->id);
+    	return array('mensaje' => 'Se elimino el post');;
     }
 }
