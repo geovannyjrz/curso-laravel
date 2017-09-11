@@ -62,7 +62,7 @@ class PostsController extends Controller
 		
 		$data = Post::destroy($post->id);
 
-		id($data == 1){
+		if($data == 1){
 			return array(
 				'mensaje' => 'Se elimino el post',
 				'respuesta' => true
