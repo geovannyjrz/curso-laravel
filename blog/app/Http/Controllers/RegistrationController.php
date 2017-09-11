@@ -13,13 +13,8 @@ class RegistrationController extends Controller
 
 	public function store(){
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
 		//Validacion de los campos
->>>>>>> c99730b8c1c9aecb3ea0cbebdaa67f04ca3ea68b
->>>>>>> master
+
 		$this->validate(request(), array(
 			'txt-name' => 'required|min:5',
 			'password' => 'required|min:6|confirmed',
