@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\User;
 
 use Illuminate\Http\Request;
 
@@ -12,27 +13,27 @@ class RegistrationController extends Controller
 
 	public function store(){
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+		//Validacion de los campos
+>>>>>>> c99730b8c1c9aecb3ea0cbebdaa67f04ca3ea68b
+>>>>>>> master
 		$this->validate(request(), array(
 			'txt-name' => 'required|min:5',
-			'txt-password' => 'required|min:6|confirmed',
+			'password' => 'required|min:6|confirmed',
 			'txt-mail' => 'required|email|unique:users,email'
 			));
 
-		$post = new Post();
+		$user = new User();
 
-		$post->title = request('txt-title');
-		$post->body = request('txt-body');
-		$post->user_id = auth()->user()->id;
-		$post->created_at = date("Y-m-d H:i:s"); 
+		$user->name = request('txt-name');
+		$user->email = request('txt-mail');
+		$user->password = bcrypt(request('password'));
+		$user->created_at = date("Y-m-d H:i:s"); 
+		$user->save();
 
-		$post->save();
-
-		/*Post::create(
-			request(array('title', 'body'))
-			);
-
-			Post::create(request()->all());*/
-
-			return redirect('/');
-		}
+		return redirect('/login');
 	}
+}

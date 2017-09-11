@@ -4,11 +4,14 @@ Route::get('/', 'PostsController@index');
 Route::get('/register', 'RegistrationController@create');
 Route::get('/login', 'SessionsController@create');
 
-Route::group(['middleware' => ['auth']], function(){
+Route::get('/pruebaAjax', 'AjaxController@prueba');
 
+Route::group(['middleware' => ['auth']], function(){
+	Route::get('/perfil', 'UsersController@profile');
 	Route::get('/posts/create', 'PostsController@create');
 	Route::post('/logout', 'PostsController@store');
 	Route::post('/posts', 'PostsController@store');
+	Route::delete('/posts/{post}', 'PostsController@delete');
 
 });
 
