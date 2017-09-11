@@ -14,6 +14,7 @@ class RegistrationController extends Controller
 	public function store(){
 
 		//Validacion de los campos
+
 		$this->validate(request(), array(
 			'txt-name' => 'required|min:5',
 			'password' => 'required|min:6|confirmed',
