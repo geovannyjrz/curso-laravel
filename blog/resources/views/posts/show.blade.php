@@ -9,25 +9,8 @@
 
 <br>
 <br>
-<br>
-<br>
-<h4>Comentarios</h4>
-
-<div id="listComments">
-	@foreach($post->comments as $comment)
-	<ul class="collection">
-		<li class="collection-item avatar">
-			<i class="material-icons circle green">insert_chart</i>
-			<span class="title"><strong>{{ $comment->user->name }}</strong></span>
-			<p>{{ $comment->body}}<br>{{ $comment->created_at->diffForHumans() }}</p>
-			<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-		</li>
-	</ul>
-	@endforeach
-</div>
 
 @if(Auth::check())
-<hr>
 <form id="frmComment">
 	{{ csrf_field() }}
 	<input type="hidden" id="id" name="id" value="{{ $post->id }}">
@@ -42,6 +25,21 @@
 	</button>
 </form>
 @endif
+<br><br>
+<hr>
+<h4>Comentarios</h4>
 
+<div id="listComments">
+	@foreach($post->comments as $comment)
+	<ul class="collection">
+		<li class="collection-item avatar">
+			<i class="material-icons circle green">insert_chart</i>
+			<span class="title"><strong>{{ $comment->user->name }}</strong></span>
+			<p>{{ $comment->body}}<br>{{ $comment->created_at->diffForHumans() }}</p>
+			<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+		</li>
+	</ul>
+	@endforeach
+</div>
 
 @endsection

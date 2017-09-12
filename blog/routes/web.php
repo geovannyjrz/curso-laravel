@@ -9,8 +9,11 @@ Route::get('/pruebaAjax', 'AjaxController@prueba');
 Route::group(['middleware' => ['auth']], function(){
 	Route::get('/perfil', 'UsersController@profile');
 	Route::get('/posts/create', 'PostsController@create');
-	Route::post('/logout', 'PostsController@store');
+	Route::get('/logout', 'SessionsController@logout');
+	Route::get('/users/{user}', 'UsersController@delete');
+
 	Route::post('/posts', 'PostsController@store');
+	
 	Route::delete('/posts/{post}', 'PostsController@delete');
 
 });

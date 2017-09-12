@@ -28,18 +28,23 @@
 
 					if(response['respuesta']){
 
-						var datos = "<ul class='collection'>";
-						datos += "<li class='collection-item avatar'>";
-						datos += "<i class='material-icons circle green'>insert_chart</i>";
-						datos += "<span class='title'><strong>"+response['data']['nombre']+"</strong></span>";
-						datos += "<p>"+response['data']['comentario']+"<br>"+response['data']['fecha']+"</p>";
-						datos += "<a href='#!' class='secondary-content'><i class='material-icons'>grade</i></a>";
-						datos += "</li>";
-						datos += "</ul>";
-						
-						$('#listComments').append(datos);
+						Materialize.toast(response['mensaje'], 2000, '', function(){
 
-						Materialize.toast(response['mensaje'], 2000);
+							$('#txt-comment').val('');
+
+							var datos = "<ul class='collection'>";
+							datos += "<li class='collection-item avatar'>";
+							datos += "<i class='material-icons circle green'>insert_chart</i>";
+							datos += "<span class='title'><strong>"+response['data']['nombre']+"</strong></span>";
+							datos += "<p>"+response['data']['comentario']+"<br>"+response['data']['fecha']+"</p>";
+							datos += "<a href='#!' class='secondary-content'><i class='material-icons'>grade</i></a>";
+							datos += "</li>";
+							datos += "</ul>";
+
+							$('#listComments').append(datos);
+
+						});
+
 					}else{
 						Materialize.toast(response['mensaje'], 2000);
 					}
