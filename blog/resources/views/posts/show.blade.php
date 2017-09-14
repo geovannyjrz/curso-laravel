@@ -3,6 +3,8 @@
 @section('content')
 <h1>{{$post->title}}</h1>
 <hr>
+<a class="waves-effect waves-light btn blue" href="/posts/{{ $post->id }}.pdf" target="pdf"><i class="material-icons left">print</i>Imprimir</a>
+<p>Publicado por: {{$post->user->name}}</p>
 <p>{{$post->created_at->toFormattedDateString()}}</p>
 <p>{{$post->body}}</p>
 <hr>

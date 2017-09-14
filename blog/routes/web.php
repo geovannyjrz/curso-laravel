@@ -11,13 +11,18 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('/posts/create', 'PostsController@create');
 	Route::get('/logout', 'SessionsController@logout');
 	Route::get('/users/{user}', 'UsersController@delete');
+	Route::get('/posts/{post}/edit', 'PostsController@edit');
+	Route::get('/users/{user}/edit', 'UsersController@edit');
 
 	Route::post('/posts', 'PostsController@store');
+	Route::post('/posts/{post}/update', 'PostsController@update');
+	Route::post('/users/{user}/update', 'UsersController@update');
 	
 	Route::delete('/posts/{post}', 'PostsController@delete');
 
 });
 
+Route::get('/posts/{post}.pdf', 'PostsController@pdf');
 Route::get('/posts/{post}', 'PostsController@show');
 
 Route::post('/login', 'SessionsController@auth');
