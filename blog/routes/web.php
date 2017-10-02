@@ -10,11 +10,13 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('/perfil', 'UsersController@profile');
 	Route::get('/posts/create', 'PostsController@create');
 	Route::get('/logout', 'SessionsController@logout');
+	Route::get('/users/image', 'UsersController@imageEdit');
 	Route::get('/users/{user}', 'UsersController@delete');
 	Route::get('/posts/{post}/edit', 'PostsController@edit');
 	Route::get('/users/{user}/edit', 'UsersController@edit');
 
 	Route::post('/posts', 'PostsController@store');
+	Route::post('/users/{user}/image', 'UsersController@imageUpdate');
 	Route::post('/posts/{post}/update', 'PostsController@update');
 	Route::post('/users/{user}/update', 'UsersController@update');
 	
